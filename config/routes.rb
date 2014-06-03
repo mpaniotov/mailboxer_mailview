@@ -9,4 +9,10 @@ Messaging::Application.routes.draw do
       post :untrash
     end
   end
+
+  if Rails.env.development?
+    mount Notifier::Preview => 'notifier_preview'
+    mount MailPreview => 'mail_view'
+  end
+
 end
